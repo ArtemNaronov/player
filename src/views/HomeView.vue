@@ -21,21 +21,26 @@ export default {
     name: "HomeView",
     data() {
         return {
-            limit: 10,
+            page: 1,
             albums: [],
             people: []
         };
     },
     mounted() {
         this.getList();
+        this.onScroll()
     },
     methods: {
         async getList() {
             try {
-                let response = await axios(`https://api.mobimusic.kz/?method=product.getNews&page=1&limit=${this.limit}`, {
+                let response = await axios(`https://api.mobimusic.kz/?method=product.getNews&page=${this.page}&limit=10`, {
                     method: "GET"
                 });
-                this.albums = response.data.collection.album;
+                let albums = response.data.collection.album;
+
+                for(let key in albums) {
+                  this.albums.push(albums[key])
+                }
                 this.people = response.data.collection.people;
             }
             catch (error) {
@@ -49,6 +54,15 @@ export default {
           });
           console.log(thisPeople);
           return thisPeople
+        },
+        onScroll() {
+          window.onscroll = () => {
+            let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+            if(bottomOfWindow) {
+              this.page += 1;
+              this.getList();
+            }
+          };
         }
     },
     components: { AlbumItem }
