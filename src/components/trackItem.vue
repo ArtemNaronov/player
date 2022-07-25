@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="track">
         <article class="media">
             <div class="media-right">
                 <figure class="image is-64x64">
@@ -7,14 +7,7 @@
                 </figure>
             </div>
             <div class="media-content">
-                <div class="content">
-                    <p>
-                    <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
-                    <br>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
-                    </p>
-                </div>
-                {{track}}
+                {{track.name}}
             </div>
         </article>
     </div>
@@ -31,5 +24,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+    .track {
+        width: 30%;
+    }
 </style>

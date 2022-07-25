@@ -33,6 +33,7 @@ export default {
 
 <style lang="scss" scoped>
 .media {
+  margin-bottom: 44px;
     & img {
         width: 278px;
         height: 278px;
@@ -44,10 +45,6 @@ export default {
     }
 }
 
-.wrapper {
-  width: 320px;
-  margin: 0 auto;
-}
 .card-loader {
   background-color: #fff;
   position: relative;

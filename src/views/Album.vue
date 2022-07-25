@@ -47,3 +47,11 @@ export default {
     components: { MainAlbum, TrackItem }
 }
 </script>
+
+<style lang="scss" scoped>
+.track__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+</style>
